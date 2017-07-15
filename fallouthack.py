@@ -1,5 +1,5 @@
 # Global Configurations
-debug_mode = True               # Starts the program with logging mode (All)
+debug_mode = False               # Starts the program with logging mode (All)
 debug_mode_basic = True         # Starts the program with logging mode (Unstable features)
 
 cache_file_name = "cache.txt"
@@ -110,6 +110,11 @@ def command_center(results): # Redirect additional features using commands
         result_printer(results, "What word do you want to edit?")
 
 def list_editor(results): # Make the item in the list editable using this function
+    print("Here's everything you have")
+    result_printer(results)
+
+    actions = input("What word do you want to change?")
+
 
 def screen_clear(): # Cleaning screen for the program. Does not work more than this
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -127,15 +132,15 @@ def file_save(results): # Creating the cache file and save it in the same direct
         # Try to create the file
         if debug_mode_basic or debug_mode: print("File does not exists. Creating it now...") # FOR DEBUG
     # Start writing in that file with the data in results
-    file = open(default_file_name, "w")
-    for i in results:
+    if cache_create: file = open(default_file_name, "w")
+    if cache_create: for i in results:
         if debug_mode_basic or debug_mode: print("Writing %s to %s"%(i, default_file_name)) # FOR DEBUG
         file.write(i+"\n")
     file.close()
 
 def exit_and_save(): # Deleting the cache and quitting the program safely
     if debug_mode_basic or debug_mode: print("Deleting cache file now...") # FOR DEBUG
-    os.remove("cache.txt")
+    if cache_delete: os.remove("cache.txt")
 
     if debug_mode_basic or debug_mode: print("Shutting the program down now. Thank you!") # FOR DEBUG
     exit()

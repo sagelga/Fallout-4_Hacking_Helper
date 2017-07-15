@@ -1,20 +1,3 @@
-
-LOCAL
-1/1
-master
-REMOTE
-1/1
-origin
-master
-PULL REQUESTS
-0
-TAGS
-0/0
-SUBMODULES
-0
-README.md
-Ignore white space
-@@ -1,42 +0,0 @@
 # Fallout 4 Hacking Mini-game Solver
 ![Fallout 4 Hacker Perks](https://vignette2.wikia.nocookie.net/fallout/images/e/ec/Fo4_Hacker.png/revision/latest?cb=20170320162306)
 
@@ -52,8 +35,13 @@ I have an idea on making this thing to be more user-friendly, but still based on
 3. Adaptive terminal size
 4. Creating vocabulary cache into .txt file
 
+# Project Checker
+|Master <br> TravisCI|Master <br> CodeBeat|
+|--------------------|--------------------|
+|[![TravisCI](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper.svg?branch=master)](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper)|[![CodeBeat](https://codebeat.co/badges/3cca5ae3-0f02-4433-82bf-f863fb47de3c)](https://codebeat.co/projects/github-com-sagelga-fallout-4_hacking_helper-master)|
+
 I hoped you like the project!
 
 ![](https://vignette2.wikia.nocookie.net/fallout/images/1/13/RobCos_Worst_Nightmare_trophy.png/revision/latest?cb=20170618215901)
 
--- Crafted with love by [@sagelga](github.com/sagelga) and with help from [@ntsd](github.com/ntsd) 
+-- Crafted with love by [@sagelga](github.com/sagelga) and with help from [@ntsd](github.com/ntsd)
