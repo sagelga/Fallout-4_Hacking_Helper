@@ -1,17 +1,21 @@
 # Global Configurations
-debug_mode = False               # Starts the program with logging mode (All)
-debug_mode_basic = True         # Starts the program with logging mode (Unstable features)
+auto_update = True                         # Automatically update this python script everytime it starts [Default = False]
 
-cache_file_name = "cache.txt"
-cache_delete = True             # Allow program to delete cache file
-cache_create = True             # Allow program to create cache file
+debug_mode = False                        # Starts the program with logging mode (All) [Default = False]
+debug_mode_basic = True             # Starts the program with logging mode (Unstable features) [Default = False]
+
+cache_file_extension = "txt"         # Do not edit this. [Default = "txt"]
+cache_file_name = "cache"            # Warning: Do not use the [Default = "cache"]
+
+cache_delete = True                         # Allow program to delete cache file [Default = True]
+cache_create = True                         # Allow program to create cache file [Default = True]
 
 # Importing dependencies libraries
-import math
-import os
-import tkinter
-import os.path
-import sys
+import math # Basic arithmetic calculations
+import os               # Allows OS system call power
+import os.path              # Allows OS system call power
+import sys              # Allows OS system call power
+import  datetime # Getting user's time for cache timestamps
 
 def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
@@ -19,11 +23,13 @@ def main(): # Served as function caller and receptions
     while 1:
         screen_clear()
         result_printer(results, "Vocabulary Lists")
+
+        text = input("Please type in possible password #%-2d : "%count)
+
         if error_code == 1:
             print("'%s' is not a valid text length. (expecting: %d) Please try again..."%(text, len(text[count-1])))
         if error_code == 2:
             print("Please type something to start a program.")
-        text = input("Please type in possible password #%-2d : "%count)
 
         if text.isalpha():
             if count != 1:
@@ -47,9 +53,15 @@ def main(): # Served as function caller and receptions
     print("Done recieving more vocabulary...\nSaving...\n")
     file_save(results)
 
+    count = 0
     while 1:
+        count += 1
         if len(results) <= 0:
-            print("We have a problem with something... Reverting the vocabulary set...")
+            print("We have a problem with something... Recovering data from cache...")
+
+        if count > 4:
+            print("We have failed you. Please report this error immediately!")
+            print("You may continue, restart or make new issues in repository.")
 
         if len(results) == 1:
             print("You have solved the riddle!")
@@ -59,11 +71,13 @@ def main(): # Served as function caller and receptions
         result_printer(results, "Possible answer")
         recommends(results)
 
-        print("\n\nPlease try some word...")
+        print("\nAttempt #%.1d. Please try some word on your game terminal."%count)
         text = input("What word have you tried? : ").upper()
         correctness = int(input("and they are what likeness? : "))
         screen_clear()
         results = password_filter(results, text, correctness)
+
+    exit_and_save()
 
 def password_filter(results, word, number): # Filters the password that does not satisfies the relationship
     possible_answer=[]
@@ -96,14 +110,13 @@ def recommends(results): # Calculate the word relationship for a chance of passw
     result_printer(answer, "Recommended")
 
 def result_printer(results, wording): # Designing the way that the possible answer will be print out
-    print(wording)
-    print(wording +"\n" + ("-" * len(wording)))
+    print(wording +"\n" + ("-" * int(len(wording)*1.5)))
     for i in results:
         print(i, end="\t")
     print("\n")
 
 def command_center(results): # Redirect additional features using commands
-    print("Welcome to command center. Here's what we can do...\n 1. /edit 2. /quit")
+    print("Welcome to command center. Here's what we can do...\n 1.  /edit 2.  /quit")
     actions = input("What do you want to do?")
     if actions == "/quit" or actions == "2":
         exit_and_save()
@@ -127,33 +140,42 @@ def list_editor(results): # Make the item in the list editable using this functi
 def screen_clear(): # Cleaning screen for the program. Does not work more than this
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def system_diagonose(): # Calculate screen size in length and width
-    root = tkinter.Tk()
-    root.withdraw()
-
-    width, height = root.winfo_screenwidth(), root.winfo_screenheight()
-    if debug_mode: print(width, "x", height, "is your current screen size")
-    if debug_mode: print("%s is your OS name" %(sys.platform))
-
-    return width, height
-
 def file_save(results): # Creating the cache file and save it in the same directory
-    if not os.path.exists(cache_file_name):
-        # Try to create the file
-        if debug_mode_basic or debug_mode: print("File does not exists. Creating it now...") # FOR DEBUG
-    # Start writing in that file with the data in results
-    if cache_create: file = open(default_file_name, "w")
     if cache_create:
+        if os.path.exists(cache_file_name):
+            # Try to create the file
+            if debug_mode_basic or debug_mode: print("File does exists. Deleting it now...") # FOR DEBUG
+            if cache_delete: os.remove(cache_file_name)
+    # Start writing in that file with the data in results
+
+        file = open(cache_file_name, "w")
+
+        # Creating file headers
+        text = "Vocabulary cache in : " + str(datetime.datetime.now().strftime("%A, %d %B %Y %I:%M %p.")) + "\n" \
+                   + "If you wish to shut data caching out, please go check out the Python script." + "\n"
+        file.write(text)
+
         for i in results:
-            if debug_mode_basic or debug_mode: print("Writing %s to %s"%(i, default_file_name)) # FOR DEBUG
-                file.write(i+"\n")
+            if (debug_mode_basic or debug_mode):
+                print("Writing %s to %s"%(i, cache_file_name)) # FOR DEBUG
+                text = i + "\n"
+            file.write(text)
     file.close()
 
 def exit_and_save(): # Deleting the cache and quitting the program safely
     if debug_mode_basic or debug_mode: print("Deleting cache file now...") # FOR DEBUG
-    if cache_delete: os.remove("cache.txt")
+    if cache_delete: os.remove(cache_file_name)
 
     if debug_mode_basic or debug_mode: print("Shutting the program down now. Thank you!") # FOR DEBUG
     exit()
+
+# For developers only!
+cache_file_name  += "." + cache_file_extension
+
+# Automatic update
+if auto_update:
+    if debug_mode: print("Updating the repository to the newest version...")
+    os.system("git pull")
+    if debug_mode: print("Your repository is updated!")
 
 main()
