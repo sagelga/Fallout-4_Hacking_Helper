@@ -1,5 +1,6 @@
 import math
 import os
+import tkinter
 
 def main():
     """Served as function caller and receptions"""
@@ -24,19 +25,15 @@ def main():
             screen_clear()
             break
 
-    print("\nDone recieving more vocabulary...")
+    print("Done recieving more vocabulary...\n")
 
     while 1:
-        if len(results) <= 0:
-            print("Program just got error. We are recovering soon...")
-            data_recovery()
-
-        if len(results) <= 1: # When the program leaves with only 1 answer
+        if len(results) <= 1:
             print("You have solved the riddle!")
             print("The answer is :", results[0])
             break
 
-        result_printer(results, "Possible answer is...")
+        result_printer(results, "Possible answer")
         recommends(results)
 
         print("\n\nPlease try some word...")
@@ -98,8 +95,16 @@ def list_editor(results):
     """Make the item in the list editable using this function."""
 
 def screen_clear():
+    """Cleaning screen for the program. Does not work more than this"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def screen_size():
+    """Calculate screen size in length and width"""
+    root = tkinter.Tk()
+    root.withdraw()
+
+    width, height = root.winfo_screenwidth(), root.winfo_screenheight()
+    return width, height
 
 """Sample case
 shot
