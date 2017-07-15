@@ -1,8 +1,3 @@
-import math
-import os
-import tkinter
-import os.path
-
 # Global Configurations
 debug_mode = True               # Starts the program with logging mode (All)
 debug_mode_basic = True         # Starts the program with logging mode (Unstable features)
@@ -11,6 +6,11 @@ cache_file_name = "cache.txt"
 cache_delete = True             # Allow program to delete cache file
 cache_create = True             # Allow program to create cache file
 
+# Importing dependencies libraries
+import math
+import os
+import tkinter
+import os.path
 
 def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
@@ -134,10 +134,10 @@ def file_save(results): # Creating the cache file and save it in the same direct
     file.close()
 
 def exit_and_save(): # Deleting the cache and quitting the program safely
-    if debug_mode_basic or debug_mode: print("Deleting cache file now...")
+    if debug_mode_basic or debug_mode: print("Deleting cache file now...") # FOR DEBUG
     os.remove("cache.txt")
 
-    if debug_mode_basic or debug_mode: print("Shutting the program down now. Thank you!")
+    if debug_mode_basic or debug_mode: print("Shutting the program down now. Thank you!") # FOR DEBUG
     exit()
 
 main()
