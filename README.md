@@ -27,6 +27,7 @@ This is coming very soon!
 1. Edit your input words
 2. Visualizing the relationships between words
 3. Adaptive terminal size
+4. Creating vocabulary cache into .txt file
 
 I hoped you like the project!
 
