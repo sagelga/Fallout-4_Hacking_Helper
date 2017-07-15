@@ -17,15 +17,21 @@ Interface will tell you what you can do and what to do. Don't worry.
 4. Choose one, and tell the program that you chose what word, and ends up with how much likeness
 5. Repeat until you can find the answer
 
+---
+
 # How does it work
 Program will count on how many characters relationships to others. That relationships that we have found helps you to find the answer swiftly by eliminating lone-wolf passwords and grouping passwords
 
 Program does not store the previous results. Thus, you will need to start it over and do it again.
 
+---
+
 # Testing Environment
 During test run of the program, sample size of the word is 4 characters long (Advanced level Terminal) is used. Algorithms can find true answer within 4 attempts, with most of the time with 3 attempts.
 
 Testing continues, as they have been tested with a longer strings, like 8-length words. They are able to calculate the possibilities very efficiently and mostly, within 4 attempts.
+
+---
 
 # Future Developments
 I have an idea on making this thing to be more user-friendly, but still based on Terminal like to let you feel more immersive with the game.
@@ -35,10 +41,14 @@ I have an idea on making this thing to be more user-friendly, but still based on
 3. Adaptive terminal size
 4. Creating vocabulary cache into .txt file
 
+---
+
 # Project Checker
-|**Master** <br> TravisCI|**Master** <br> Codacy|
-|--------------------|--------------------|
-|[![TravisCI](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper.svg?branch=master)](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper)|[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f771095c4b29457abd2395d0a29d164f)](https://www.codacy.com/app/sagelga/Fallout-4_Hacking_Helper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sagelga/Fallout-4_Hacking_Helper&amp;utm_campaign=Badge_Grade)|
+|<img src="https://travis-ci.com/images/logos/TravisCI-Mascot-1.png" height="75px"> <br> TravisCI|<img src="https://pbs.twimg.com/profile_images/796423844663853056/WsR0OEAZ.jpg" height="75px">  <br> Codacy|
+|:--------------------:|:--------------------:|
+|Master<br>[![TravisCI](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper.svg?branch=master)](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper)|Master<br>[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f771095c4b29457abd2395d0a29d164f)](https://www.codacy.com/app/sagelga/Fallout-4_Hacking_Helper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sagelga/Fallout-4_Hacking_Helper&amp;utm_campaign=Badge_Grade)|
+
+---
 
 I hoped you like the project!
 
