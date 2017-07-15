@@ -11,6 +11,7 @@ import math
 import os
 import tkinter
 import os.path
+import sys
 
 def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
@@ -96,7 +97,7 @@ def recommends(results): # Calculate the word relationship for a chance of passw
 
 def result_printer(results, wording): # Designing the way that the possible answer will be print out
     print(wording)
-    print("-" * len(wording))
+    print(wording +"\n" + ("-" * len(wording)))
     for i in results:
         print(i, end="\t")
     print("\n")
@@ -110,21 +111,30 @@ def command_center(results): # Redirect additional features using commands
         result_printer(results, "What word do you want to edit?")
 
 def list_editor(results): # Make the item in the list editable using this function
-    print("Here's everything you have")
-    result_printer(results)
+    while True:
+        print("Here's everything you have")
+        result_printer(results)
 
-    actions = input("What word do you want to change?")
+        actions = input("What word do you want to change?")
+        if results.find(actions):
+            results[results.find(actions)] = actions
+        actions = input("Have you done editing?").upper()
+        if 'Y' in actions:
+            if debug_mode: print("You have done editing...")
+            break
 
 
 def screen_clear(): # Cleaning screen for the program. Does not work more than this
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def screen_size(): # Calculate screen size in length and width
+def system_diagonose(): # Calculate screen size in length and width
     root = tkinter.Tk()
     root.withdraw()
 
     width, height = root.winfo_screenwidth(), root.winfo_screenheight()
     if debug_mode: print(width, "x", height, "is your current screen size")
+    if debug_mode: print("%s is your OS name" %(sys.platform))
+
     return width, height
 
 def file_save(results): # Creating the cache file and save it in the same directory
@@ -133,9 +143,10 @@ def file_save(results): # Creating the cache file and save it in the same direct
         if debug_mode_basic or debug_mode: print("File does not exists. Creating it now...") # FOR DEBUG
     # Start writing in that file with the data in results
     if cache_create: file = open(default_file_name, "w")
-    if cache_create: for i in results:
-        if debug_mode_basic or debug_mode: print("Writing %s to %s"%(i, default_file_name)) # FOR DEBUG
-        file.write(i+"\n")
+    if cache_create:
+        for i in results:
+            if debug_mode_basic or debug_mode: print("Writing %s to %s"%(i, default_file_name)) # FOR DEBUG
+                file.write(i+"\n")
     file.close()
 
 def exit_and_save(): # Deleting the cache and quitting the program safely
