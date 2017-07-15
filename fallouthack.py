@@ -114,7 +114,7 @@ def list_editor(results): # Make the item in the list editable using this functi
 def screen_clear(): # Cleaning screen for the program. Does not work more than this
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def screen_size(): """Calculate screen size in length and width"""
+def screen_size(): # Calculate screen size in length and width
     root = tkinter.Tk()
     root.withdraw()
 
