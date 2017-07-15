@@ -12,7 +12,7 @@ cache_delete = True             # Allow program to delete cache file
 cache_create = True             # Allow program to create cache file
 
 
-def main(): """Served as function caller and receptions"""
+def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
 
     while 1:
@@ -64,7 +64,7 @@ def main(): """Served as function caller and receptions"""
         screen_clear()
         results = password_filter(results, text, correctness)
 
-def password_filter(results, word, number): """Filters the password that does not satisfies the relationship"""
+def password_filter(results, word, number): # Filters the password that does not satisfies the relationship
     possible_answer=[]
     if debug_mode: print("----- Word -----|-- Similarity --") # FOR DEBUG
     for check_answer in results:
@@ -78,7 +78,7 @@ def password_filter(results, word, number): """Filters the password that does no
     if debug_mode: print(possible_answer) # FOR DEBUG
     return possible_answer
 
-def recommends(results): """Calculate the word relationship for a chance of password elimination"""
+def recommends(results): # Calculate the word relationship for a chance of password elimination
     length = len(results[0])
     chars, answer = [], []
     for i in range(length):
@@ -94,14 +94,14 @@ def recommends(results): """Calculate the word relationship for a chance of pass
 
     result_printer(answer, "Recommended")
 
-def result_printer(results, wording): """Designing the way that the possible answer will be print out"""
+def result_printer(results, wording): # Designing the way that the possible answer will be print out
     print(wording)
     print("-" * len(wording))
     for i in results:
         print(i, end="\t")
     print("\n")
 
-def command_center(results): """Redirect additional features using commands"""
+def command_center(results): # Redirect additional features using commands
     print("Welcome to command center. Here's what we can do...\n 1. /edit 2. /quit")
     actions = input("What do you want to do?")
     if actions == "/quit" or actions == "2":
@@ -109,9 +109,9 @@ def command_center(results): """Redirect additional features using commands"""
     elif actions == "/edit" or actions == "1":
         result_printer(results, "What word do you want to edit?")
 
-def list_editor(results): """Make the item in the list editable using this function."""
+def list_editor(results): # Make the item in the list editable using this function
 
-def screen_clear(): """Cleaning screen for the program. Does not work more than this"""
+def screen_clear(): # Cleaning screen for the program. Does not work more than this
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def screen_size(): """Calculate screen size in length and width"""
@@ -122,7 +122,7 @@ def screen_size(): """Calculate screen size in length and width"""
     if debug_mode: print(width, "x", height, "is your current screen size")
     return width, height
 
-def file_save(results): """Creating the cache file and save it in the same directory"""
+def file_save(results): # Creating the cache file and save it in the same directory
     if not os.path.exists(cache_file_name):
         # Try to create the file
         if debug_mode_basic or debug_mode: print("File does not exists. Creating it now...") # FOR DEBUG
@@ -133,7 +133,7 @@ def file_save(results): """Creating the cache file and save it in the same direc
         file.write(i+"\n")
     file.close()
 
-def exit_and_save(): """Deleting the cache and quitting the program safely"""
+def exit_and_save(): # Deleting the cache and quitting the program safely
     if debug_mode_basic or debug_mode: print("Deleting cache file now...")
     os.remove("cache.txt")
 
