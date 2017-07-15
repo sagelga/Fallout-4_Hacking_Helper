@@ -24,3 +24,15 @@ hunters
 cabinet
 emerged
 battles
+
+# Advanced (8-length) sample vocabulary list
+loyalist
+feverish
+citizens
+resulted
+supplied
+suddenly
+unwanted
+humanity
+conquest
+servants
