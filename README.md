@@ -36,9 +36,9 @@ I have an idea on making this thing to be more user-friendly, but still based on
 4. Creating vocabulary cache into .txt file
 
 # Project Checker
-|Master <br> TravisCI|Master <br> CodeBeat|
+|**Master** <br> TravisCI|**Master** <br> Codacy|
 |--------------------|--------------------|
-|[![TravisCI](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper.svg?branch=master)](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper)|[![CodeBeat](https://codebeat.co/badges/3cca5ae3-0f02-4433-82bf-f863fb47de3c)](https://codebeat.co/projects/github-com-sagelga-fallout-4_hacking_helper-master)|
+|[![TravisCI](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper.svg?branch=master)](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper)|[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f771095c4b29457abd2395d0a29d164f)](https://www.codacy.com/app/sagelga/Fallout-4_Hacking_Helper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sagelga/Fallout-4_Hacking_Helper&amp;utm_campaign=Badge_Grade)|
 
 I hoped you like the project!
 
