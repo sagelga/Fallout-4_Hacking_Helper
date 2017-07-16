@@ -81,16 +81,16 @@ def main(): # Served as function caller and receptions
 
 def password_filter(results, word, number): # Filters the password that does not satisfies the relationship
     possible_answer=[]
-    if debug_mode: print("----- Word -----|-- Similarity --") # FOR DEBUG
+    if debug_mode: print("[Debug] ----- Word -----|-- Similarity --") # FOR DEBUG
     for check_answer in results:
         n = 0
         for i,v in enumerate(word):
             if check_answer[i] == v:
                 n += 1
-        if debug_mode: print(check_answer, n) # FOR DEBUG
+        if debug_mode: print("[Debug] " + check_answer, n) # FOR DEBUG
         if n == number:
             possible_answer.append(check_answer)
-    if debug_mode: print(possible_answer) # FOR DEBUG
+    if debug_mode: print("[Debug] " + possible_answer) # FOR DEBUG
     return possible_answer
 
 def recommends(results): # Calculate the word relationship for a chance of password elimination
@@ -133,7 +133,7 @@ def list_editor(results): # Make the item in the list editable using this functi
             results[results.find(actions)] = actions
         actions = input("Have you done editing?").upper()
         if 'Y' in actions:
-            if debug_mode: print("You have done editing...")
+            if debug_mode: print("[Debug] You have done editing...") # FOR DEBUG
             break
 
 
@@ -144,7 +144,7 @@ def file_save(results): # Creating the cache file and save it in the same direct
     if cache_create:
         if os.path.exists(cache_file_name):
             # Try to create the file
-            if debug_mode_basic or debug_mode: print("File does exists. Deleting it now...") # FOR DEBUG
+            if debug_mode_basic or debug_mode: print("[Debug] File does exists. Deleting it now...") # FOR DEBUG
             if cache_delete: os.remove(cache_file_name)
     # Start writing in that file with the data in results
 
@@ -157,25 +157,28 @@ def file_save(results): # Creating the cache file and save it in the same direct
 
         for i in results:
             if (debug_mode_basic or debug_mode):
-                print("Writing %s to %s"%(i, cache_file_name)) # FOR DEBUG
+                print("[Debug] Writing %s to %s"%(i, cache_file_name)) # FOR DEBUG
                 text = i + "\n"
             file.write(text)
     file.close()
 
 def exit_and_save(): # Deleting the cache and quitting the program safely
-    if debug_mode_basic or debug_mode: print("Deleting cache file now...") # FOR DEBUG
+    if debug_mode_basic or debug_mode: print("[Debug] Deleting cache file now...") # FOR DEBUG
     if cache_delete: os.remove(cache_file_name)
 
-    if debug_mode_basic or debug_mode: print("Shutting the program down now. Thank you!") # FOR DEBUG
+    if debug_mode_basic or debug_mode: print("[Debug] Shutting the program down now. Thank you!") # FOR DEBUG
     exit()
 
+# Edit every configurations here
 # For developers only!
-cache_file_name  += "." + cache_file_extension
+cache_file_name  = cache_file_name + "." + cache_file_extension
 
 # Automatic update
 if auto_update:
-    if debug_mode: print("Updating the repository to the newest version...")
+    if debug_mode: print("[Debug] Updating the repository to the newest version...")
     os.system("git pull")
-    if debug_mode: print("Your repository is updated!")
+    if debug_mode: print("[Debug] Your repository is updated!")
 
+
+# Program will starts here...
 main()
