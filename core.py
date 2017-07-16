@@ -1,22 +1,20 @@
-# Global Configurations
-auto_update = True                         # Automatically update this python script everytime it starts [Default = False]
+"""
+Fallout 4 Hacking minigame Helper
+---------------------------------
+Please go read README.md for an instructions on what you can do.
 
-debug_mode = False                        # Starts the program with logging mode (All) [Default = False]
-debug_mode_basic = False             # Starts the program with logging mode (Unstable features) [Default = False]
-
-cache_file_extension = "txt"         # Do not edit this. [Default = "txt"]
-cache_file_name = "cache"            # Warning: Do not use the [Default = "cache"]
-
-cache_delete = True                         # Allow program to delete cache file [Default = True]
-cache_create = True                         # Allow program to create cache file [Default = True]
+Thanks!
+- @son9912
+"""
 
 # Importing dependencies libraries
-import os                       # Allows OS system call power
-import os.path             # Allows OS system call power
-import  datetime        # Getting user's time for cache timestamps
+import os                            # Allows OS system call power
+import os.path                       # Allows OS system call power
+import datetime                      # Getting user's time for cache timestamps
 
 # Import dependencies files
-from systems import * # Import system.py
+from systems import * # Import systems.py
+from configurations import * # Imports configurations.py
 
 def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
@@ -99,7 +97,7 @@ def recommends(results): # Calculate the word relationship for a chance of passw
     length = len(results[0])
     chars, answer = [], []
     for i in range(length):
-        s= "".join(v[i] for v in results)
+        s = "".join(v[i] for v in results)
         char = max((s.count(j),j)for j in s)
         chars.append(char)
 
@@ -109,7 +107,7 @@ def recommends(results): # Calculate the word relationship for a chance of passw
         if i[chars.index(max_char)] == max_char[1]:
             answer.append(i)
 
-    result_printer(answer, "Recommended")
+    result_printer(answer, "Recommend word contains : %s"%max_char[1])
 
 # Edit every configurations here
 # For developers only!
