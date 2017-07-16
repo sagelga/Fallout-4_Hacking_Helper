@@ -2,7 +2,7 @@
 auto_update = True                         # Automatically update this python script everytime it starts [Default = False]
 
 debug_mode = False                        # Starts the program with logging mode (All) [Default = False]
-debug_mode_basic = True             # Starts the program with logging mode (Unstable features) [Default = False]
+debug_mode_basic = False             # Starts the program with logging mode (Unstable features) [Default = False]
 
 cache_file_extension = "txt"         # Do not edit this. [Default = "txt"]
 cache_file_name = "cache"            # Warning: Do not use the [Default = "cache"]
@@ -11,11 +11,12 @@ cache_delete = True                         # Allow program to delete cache file
 cache_create = True                         # Allow program to create cache file [Default = True]
 
 # Importing dependencies libraries
-import math # Basic arithmetic calculations
-import os               # Allows OS system call power
-import os.path              # Allows OS system call power
-import sys              # Allows OS system call power
-import  datetime # Getting user's time for cache timestamps
+import os                       # Allows OS system call power
+import os.path             # Allows OS system call power
+import  datetime        # Getting user's time for cache timestamps
+
+# Import dependencies files
+from systems import * # Import system.py
 
 def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
@@ -36,11 +37,12 @@ def main(): # Served as function caller and receptions
                 if len(text) != len(results[0]):
                     error_code = 1
                     continue
-            results.append(text.upper())
-            count += 1
-            error_code = 0
-        elif text != "":
-            command_center(results)
+            else:
+                results.append(text.upper())
+                count += 1
+                error_code = 0
+        elif text.startswith("/"):
+            command_center(results, text)
         else:
             if len(results) < 1:
                 error_code = 2
@@ -108,66 +110,6 @@ def recommends(results): # Calculate the word relationship for a chance of passw
             answer.append(i)
 
     result_printer(answer, "Recommended")
-
-def result_printer(results, wording): # Designing the way that the possible answer will be print out
-    print(wording +"\n" + ("-" * int(len(wording)*1.5)))
-    for i in results:
-        print(i, end="\t")
-    print("\n")
-
-def command_center(results): # Redirect additional features using commands
-    print("Welcome to command center. Here's what we can do...\n 1.  /edit 2.  /quit")
-    actions = input("What do you want to do?")
-    if actions == "/quit" or actions == "2":
-        exit_and_save()
-    elif actions == "/edit" or actions == "1":
-        result_printer(results, "What word do you want to edit?")
-
-def list_editor(results): # Make the item in the list editable using this function
-    while True:
-        print("Here's everything you have")
-        result_printer(results)
-
-        actions = input("What word do you want to change?")
-        if results.find(actions):
-            results[results.find(actions)] = actions
-        actions = input("Have you done editing?").upper()
-        if 'Y' in actions:
-            if debug_mode: print("[Debug] You have done editing...") # FOR DEBUG
-            break
-
-
-def screen_clear(): # Cleaning screen for the program. Does not work more than this
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-def file_save(results): # Creating the cache file and save it in the same directory
-    if cache_create:
-        if os.path.exists(cache_file_name):
-            # Try to create the file
-            if debug_mode_basic or debug_mode: print("[Debug] File does exists. Deleting it now...") # FOR DEBUG
-            if cache_delete: os.remove(cache_file_name)
-    # Start writing in that file with the data in results
-
-        file = open(cache_file_name, "w")
-
-        # Creating file headers
-        text = "Vocabulary cache in : " + str(datetime.datetime.now().strftime("%A, %d %B %Y %I:%M %p.")) + "\n" \
-                   + "If you wish to shut data caching out, please go check out the Python script." + "\n"
-        file.write(text)
-
-        for i in results:
-            if (debug_mode_basic or debug_mode):
-                print("[Debug] Writing %s to %s"%(i, cache_file_name)) # FOR DEBUG
-                text = i + "\n"
-            file.write(text)
-    file.close()
-
-def exit_and_save(): # Deleting the cache and quitting the program safely
-    if debug_mode_basic or debug_mode: print("[Debug] Deleting cache file now...") # FOR DEBUG
-    if cache_delete: os.remove(cache_file_name)
-
-    if debug_mode_basic or debug_mode: print("[Debug] Shutting the program down now. Thank you!") # FOR DEBUG
-    exit()
 
 # Edit every configurations here
 # For developers only!
