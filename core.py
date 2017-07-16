@@ -10,7 +10,6 @@ Thanks!
 # Importing dependencies libraries
 import os                            # Allows OS system call power
 import os.path                       # Allows OS system call power
-import datetime                      # Getting user's time for cache timestamps
 
 # Import dependencies files
 import systems # Import systems.py
@@ -63,7 +62,7 @@ def main(): # Served as function caller and receptions
     while 1:
         count += 1
         if len(results) <= 0:
-            print("We have a problem with something... Recovering data from cache..." if cache_create else "You have disabled our cache system. We are unable to retrieve this...") 
+            print("We have a problem with something... Recovering data from cache..." if cache_create else "You have disabled our cache system. We are unable to retrieve this...")
             # and actually pull data from the cache created.
 
         if count > 4:

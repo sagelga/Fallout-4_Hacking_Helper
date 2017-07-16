@@ -10,7 +10,6 @@ Thanks!
 # Importing dependencies libraries
 import os                            # Allows OS system call power
 import os.path                       # Allows OS system call power
-import datetime                      # Getting user's time for cache timestamps
 
 # Import dependencies files
 import configurations # Imports configurations.py
@@ -73,6 +72,7 @@ def file_save(results): # Creating the cache file and save it in the same direct
         file = open(configurations.cache_file_name, "w")
 
         # Creating file headers
+        import datetime                      # Getting user's time for cache timestamps
         text = "Vocabulary cache in : " + str(datetime.datetime.now().strftime("%A, %d %B %Y %I:%M %p.")) + "\n" \
                    + "If you wish to shut data caching out, please go check out the Python script." + "\n"
         file.write(text)
