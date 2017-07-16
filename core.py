@@ -16,7 +16,7 @@ import systems # Import systems.py
 import configurations # Imports configurations.py
 
 def main(): # Served as function caller and receptions
-    count, results, error_code = 1, [], 0
+    count, results = 1, [],
 
     while 1:
         systems.screen_clear()
@@ -24,32 +24,22 @@ def main(): # Served as function caller and receptions
 
         text = input("Please type in possible password #%-2d : "%count)
 
-        if error_code == 1:
-            print("'%s' is not a valid text length. (expecting: %d) Please try again..."%(text, len(results[0])))
-        if error_code == 2:
-            print("Please type something to start a program.")
-
         if text.startswith("/"):
-            error_code = 0
             results = systems.command_center(results, text)
+
         elif text.isalpha():
-            if count > 1:
-                if len(text) != len(results[0]):
-                    error_code = 1
+            if (count > 1) and (len(text) != len(results[0])):
+                    print("'%s' is not a valid text length. (expecting: %d) Please try again..."%(text, len(results[0])))
                     continue
-                else:
-                    results.append(text.upper())
-                    count += 1
-                    error_code = 0
             else:
                 results.append(text.upper())
                 count += 1
-                error_code = 0
-        else:
-            if len(results) < 1:
-                error_code = 2
+
+        elif len(results) < 1:
+                print("Please type something to start a program.")
                 continue
-            else:
+
+        else:
                 error_code = 0
                 systems.screen_clear()
                 break
