@@ -10,4 +10,5 @@ cache_file_name = "cache"     # Warning: Do not use the name that conflict our f
 cache_delete = True           # Allow program to delete cache file [Default = True]
 cache_create = True           # Allow program to create cache file [Default = True]
 
-cache_file_name = cache_file_name + "." + cache_file_extension
+# Edit file name configurations 
+cache_file_name  = cache_file_name + "." + cache_file_extension

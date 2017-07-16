@@ -13,51 +13,58 @@ import os.path                       # Allows OS system call power
 import datetime                      # Getting user's time for cache timestamps
 
 # Import dependencies files
-from systems import * # Import systems.py
-from configurations import * # Imports configurations.py
+import systems # Import systems.py
+import configurations # Imports configurations.py
 
 def main(): # Served as function caller and receptions
     count, results, error_code = 1, [], 0
 
     while 1:
-        screen_clear()
-        result_printer(results, "Vocabulary Lists")
+        systems.screen_clear()
+        systems.result_printer(results, "Vocabulary Lists")
 
         text = input("Please type in possible password #%-2d : "%count)
 
         if error_code == 1:
-            print("'%s' is not a valid text length. (expecting: %d) Please try again..."%(text, len(text[count-1])))
+            print("'%s' is not a valid text length. (expecting: %d) Please try again..."%(text, len(results[0])))
         if error_code == 2:
             print("Please type something to start a program.")
 
-        if text.isalpha():
-            if count != 1:
+        if text.startswith("/"):
+            error_code = 0
+            results = systems.command_center(results, text)
+        elif text.isalpha():
+            if count > 1:
                 if len(text) != len(results[0]):
                     error_code = 1
                     continue
+                else:
+                    results.append(text.upper())
+                    count += 1
+                    error_code = 0
             else:
                 results.append(text.upper())
                 count += 1
                 error_code = 0
-        elif text.startswith("/"):
-            command_center(results, text)
         else:
             if len(results) < 1:
                 error_code = 2
                 continue
             else:
                 error_code = 0
-                screen_clear()
+                systems.screen_clear()
                 break
 
     print("Done recieving more vocabulary...\nSaving...\n")
-    file_save(results)
+    systems.file_save(results)
 
     count = 0
+
     while 1:
         count += 1
         if len(results) <= 0:
-            print("We have a problem with something... Recovering data from cache...")
+            print("We have a problem with something... Recovering data from cache..." if cache_create else "You have disabled our cache system. We are unable to retrieve this...") 
+            # and actually pull data from the cache created.
 
         if count > 4:
             print("We have failed you. Please report this error immediately!")
@@ -68,29 +75,29 @@ def main(): # Served as function caller and receptions
             print("The answer is :", results[0])
             break
 
-        result_printer(results, "Possible answer")
+        systems.result_printer(results, "Possible answer")
         recommends(results)
 
         print("\nAttempt #%.1d. Please try some word on your game terminal."%count)
         text = input("What word have you tried? : ").upper()
         correctness = int(input("and they are what likeness? : "))
-        screen_clear()
+        systems.screen_clear()
         results = password_filter(results, text, correctness)
 
-    exit_and_save()
+    systems.exit_and_save()
 
 def password_filter(results, word, number): # Filters the password that does not satisfies the relationship
     possible_answer=[]
-    if debug_mode: print("[Debug] ----- Word -----|-- Similarity --") # FOR DEBUG
+    if configurations.debug_mode: print("[Debug] ----- Word -----|-- Similarity --") # FOR DEBUG
     for check_answer in results:
         n = 0
         for i,v in enumerate(word):
             if check_answer[i] == v:
                 n += 1
-        if debug_mode: print("[Debug] " + check_answer, n) # FOR DEBUG
+        if configurations.debug_mode: print("[Debug] " + check_answer, n) # FOR DEBUG
         if n == number:
             possible_answer.append(check_answer)
-    if debug_mode: print("[Debug] " + possible_answer) # FOR DEBUG
+    if configurations.debug_mode: print("[Debug] " + possible_answer) # FOR DEBUG
     return possible_answer
 
 def recommends(results): # Calculate the word relationship for a chance of password elimination
@@ -107,17 +114,13 @@ def recommends(results): # Calculate the word relationship for a chance of passw
         if i[chars.index(max_char)] == max_char[1]:
             answer.append(i)
 
-    result_printer(answer, "Recommend word contains : %s"%max_char[1])
-
-# Edit every configurations here
-# For developers only!
-cache_file_name  = cache_file_name + "." + cache_file_extension
+    systems.result_printer(answer, "Recommend word contains : %s"%max_char[1])
 
 # Automatic update
-if auto_update:
-    if debug_mode: print("[Debug] Updating the repository to the newest version...")
+if configurations.auto_update:
+    if configurations.debug_mode: print("[Debug] Updating the repository to the newest version...")
     os.system("git pull")
-    if debug_mode: print("[Debug] Your repository is updated!")
+    if configurations.debug_mode: print("[Debug] Your repository is updated!")
 
 
 # Program will starts here...
