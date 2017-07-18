@@ -1,14 +1,30 @@
-# Global Configurations
-auto_update = False            # Automatically update this python script everytime it starts [Default = False]
+"""
+Global configurations
+---------------------
+You may change everything in this file to make sure your program works the way you like to have.
 
-debug_mode = False            # Shows all the program process [Default = False]
-debug_mode_basic = False      # Shows only unstable feature program process (Unstable features) [Default = False]
+NOTE: Editing other than default can have consequence on program. Please make sure you are ready to take impact."""
 
-cache_file_extension = "txt"  # Do not edit this. [Default = "txt"]
-cache_file_name = "cache"     # Warning: Do not use the name that conflict our file [Default = "cache"]
+# Automatically update this python script everytime it starts [Default = False]
+auto_update = False
 
-cache_delete = True           # Allow program to delete cache file [Default = True]
-cache_create = True           # Allow program to create cache file [Default = True]
+# Shows all the program process [Default = False]
+debug_mode = False
+
+# Shows only unstable feature program process (Unstable features) [Default = False]
+debug_mode_basic = False
+
+# Set up the cache file name to be [Default = "cache"]
+cache_file_name = "cache"
+
+# Allow program to create cache file [Default = True]
+cache_create = True
+
+# Allow program to delete cache file [Default = True]
+cache_delete = True
+
+# Allow loggings [Default = True]
+cache_log = True
 
 # Edit file name configurations
-cache_file_name  = cache_file_name + "." + cache_file_extension
+cache_file_name = cache_file_name + ".txt"
