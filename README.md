@@ -1,7 +1,7 @@
 <h1 align="center"> Fallout 4 Hacking Mini-game Solver </h1>
-<center><img src="https://vignette2.wikia.nocookie.net/fallout/images/e/ec/Fo4_Hacker.png/revision/latest?cb=20170320162306"></center>
+<img src="https://vignette2.wikia.nocookie.net/fallout/images/e/ec/Fo4_Hacker.png/revision/latest?cb=20170320162306" alt="Fallout Hack Perks" align="middle">
 
-<p align="center"> Python script that helps you to hack Fallout 4 terminal fast and efficiently, using custom algorithms to find the true answer within 4 allocated attempts. </p>
+<p align="center"> Pure Python script that helps you to hack Fallout 4 terminal fast and efficiently, <br>by using custom algorithms to find the true answer within 4 allocated attempts. </p>
 
 ---
 
@@ -11,8 +11,20 @@ So, I create python program to find the answer to the riddles and gets the loots
 
 ![Hacking Terminal from Fallout 4](http://cdn.gamer-network.net/2015/usgamer/f4_lock_01.jpg)
 
+---
+<h1 align="center">Basic Requirements</h1>
+<h3 align="center">Python 3 and above (work best with <a href="https://www.python.org/downloads/">Python 3.6</a>)</h3>
+You can check if your computer has Python or not by using `python3` or `py -3` on your Terminal (UNIX-based OS), Command Prompt, Windows PowerShell (Windows OS)
+
+<h3 align="center">(Optional) Latest version of this program (Requires Git)</h3>
+You can check if your computer has the latest version of program by editing `configurations.py` and toggle `auto_update` to "True"
+
+---
+
 <h1 align="center">  How to use </h1>
 Interface will tell you what you can do and what to do. Don't worry.
+
+Start the program with `python3 core.py` for UNIX based OS or `py -3 core.py` for Windows OS
 1. Start typing up all the possible answers (all the possible answer) one-by-one.
 2. Program will shows all the vocabulary that you have typed in Vocabulary List.
 3. If you want to edit the vocabulary, type `/edit <word that you want to change> <word that you want to be>` ie. `/edit test desk`

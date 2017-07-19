@@ -17,6 +17,8 @@ import configurations  # Imports configurations.py
 
 
 def main():  # Served as function caller and receptions
+    print("Robco Industries (TM) Termlink Protocol")
+    print("Welcome to Fallout 4 Hacking Solver")
     count, results, text = 1, [], ""
     error_code = 0
 
