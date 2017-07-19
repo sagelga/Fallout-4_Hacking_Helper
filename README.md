@@ -1,7 +1,7 @@
 # Fallout 4 Hacking Mini-game Solver
 ![Fallout 4 Hacker Perks](https://vignette2.wikia.nocookie.net/fallout/images/e/ec/Fo4_Hacker.png/revision/latest?cb=20170320162306)
 
-Python script that helps you to hack Fallout 4 terminal fast and efficiently, using custom alorithms to find the true answer within 4 allocated attempts.
+Python script that helps you to hack Fallout 4 terminal fast and efficiently, using custom algorithms to find the true answer within 4 allocated attempts.
 
 # Inspiration
 What inspires me is that when I played Fallout 4 game, and the riddles just get harder than ever. <br>
@@ -17,6 +17,8 @@ Interface will tell you what you can do and what to do. Don't worry.
 4. Choose one, and tell the program that you chose what word, and ends up with how much likeness
 5. Repeat until you can find the answer
 
+If you have any issues or troubleshoot, please check out the wiki
+
 ---
 
 # How does it work
@@ -27,19 +29,17 @@ Program does not store the previous results. Thus, you will need to start it ove
 ---
 
 # Testing Environment
-During test run of the program, sample size of the word is 4 characters long (Advanced level Terminal) is used. Algorithms can find true answer within 4 attempts, with most of the time with 3 attempts.
+During test run of the program, maximum word sample size is 11 characters long (Expert level Terminal) is used. Algorithms can find true answer within 4 attempts, with most of the time with 3 attempts.
 
-Testing continues, as they have been tested with a longer strings, like 8-length words. They are able to calculate the possibilities very efficiently and mostly, within 4 attempts.
+Testing continues, as they have been tested with a varieties of strings length, like 8-length words. They are able to calculate the possibilities very efficiently and mostly, within 4 attempts.
 
 ---
 
 # Future Developments
 I have an idea on making this thing to be more user-friendly, but still based on Terminal like to let you feel more immersive with the game.
 
-1. Edit your input words
-2. Visualizing the relationships between words
-3. Adaptive terminal size
-4. Creating vocabulary cache into .txt file
+1. Visualizing the relationships between words
+2. Adaptive terminal size
 
 ---
 

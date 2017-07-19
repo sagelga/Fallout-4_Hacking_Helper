@@ -14,7 +14,6 @@ import os.path                       # Allows OS system call power
 # Import dependencies files
 import configurations  # Imports configurations.py
 
-
 def result_printer(results, wording): # Designing the way that the possible answer will be print out
     if not len(results) == 0:  # Will print if the program does not recieve a blank print
         print(wording)
@@ -23,45 +22,56 @@ def result_printer(results, wording): # Designing the way that the possible answ
             print(i, end="\t")
         print("\n")
 
-
 def command_center(results, actions):  # Redirect additional features using commands
-    if len(actions) != 1:
-        print("Welcome to command center. Here's what we can do...\n1.  /edit 2.  /quit")
-    if not actions.startswith("/"):
-        actions = input("What do you want to do?")
+    actions = input("""Welcome to command center. Here's what we can do...
+1. /edit\t2. /quit
+What do you want to do? : """)
 
-    if actions == "/edit" or actions == "1":
-        results = list_editor(results)
-    if actions == "/quit" or actions == "2":
+    if actions.startswith("/edit") or actions == "1":
+        results = list_editor(results, actions)
+    if actions.startswith("/quit") or actions == "2":
         exit_and_save()
 
     return results
 
+def list_editor(results, actions):  # Make the item in the list editable using this function
 
-def list_editor(results):  # Make the item in the list editable using this function
+    one_time = False
+
+    if len(results) < 1:
+        print("You cannot use /edit when you have a blank vocabulary list")
+        return results
+
     while True:
         screen_clear()
         result_printer(results, "Here's everything you have")
 
-        actions = input(
-            "Please type /stop to finish your editing\nWhat word do you want to change?  : ")
+        actions = actions[5:].strip().upper()
+        if actions == "":
+            actions = input("Please type /stop to finish your editing\n \
+                      What word do you want to change? : ")
+        else:
+            one_time = True
 
-        if actions .startswith("/"):
-            if actions == "/stop":
+        if actions.startswith("/"):
+            if actions.startswith("/stop"):
                 break
-            elif actions == "/quit":
-                exit_and_save()
+            else:
+                command_center(results, actions)
         else:
             actions = actions.upper()
 
         if actions in results:
-            for i in range(len(results)):
+            for i, j in enumerate(results):
                 if results[i] == actions:
                     results[i] = input(
-                        "What do you want the word %s to become? : " % (results[i])).upper()
+                        "What do you want '%s' to become? : " % (results[i])).upper()
         else:
             print(
-                "We cannot find the word %s in the list. Please check for typos..." % actions)
+                "We cannot find '%s' in the list. Please check for typos..." % actions)
+
+        if one_time:
+            break
 
     # After done with list modification
     return results

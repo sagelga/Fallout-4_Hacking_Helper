@@ -17,7 +17,7 @@ import configurations  # Imports configurations.py
 
 
 def main():  # Served as function caller and receptions
-    count, results = 1, []
+    count, results, text = 1, [], ""
     error_code = 0
 
     while 1:
