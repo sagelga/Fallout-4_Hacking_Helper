@@ -69,3 +69,7 @@ This is an automatic program checker. <br>Please take a look before cloning or d
 ![](https://vignette2.wikia.nocookie.net/fallout/images/1/13/RobCos_Worst_Nightmare_trophy.png/revision/latest?cb=20170618215901)
 
 -- Crafted with love by [@sagelga](github.com/sagelga) and with help from [@ntsd](github.com/ntsd) and [@kinisan](github.com/kinisan)
+
+---
+
+<p align="center">Fallout 4, Vault Boy and Fallout Franchise is a part of Bethesda Software LLC. <br>This software does not related or created for commercial use or a part of Fallout Franchise.<br><br>All photos and related pictures from Internet is copyright by its publishers. <br>Please see legal terms for more information.<p>
