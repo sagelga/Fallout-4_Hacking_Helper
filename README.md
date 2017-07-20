@@ -48,7 +48,8 @@ If the answer is "SENT", this is how the program will eliminate the word list. A
 |:-----------------:|:------------:|:------------:|:------------:|
 |**s**hot <br> hurt <br> **s**ell <br> give <br> **s**ure <br> gear <br> **s**ent <br> fire <br> glow <br> week <br> ones <br> sick|**s**hot <br> **s**ell <br> **s**ure <br> **s**ent <br> **s**ick <br> |**s**en**t**|-|
 
-Program will change recommended words everytime it finds a significant changes (like finding 0 likeness answer)
+The program chooses the relationship that is equal to the likeness as a possible answer. More efficient algorithms can be reached manually by selecting the most frequent word pattern. <br>
+Program will change recommended words every time it finds a significant changes (like finding 0 likeness answer)
 
 ---
 
@@ -58,21 +59,36 @@ During test run of the program, maximum word sample size is 11 characters long (
 Testing continues, as they have been tested with a varieties of strings length, like 8-length words. They are able to calculate the possibilities very efficiently and mostly, within 4 attempts.
 
 ---
+<h1 align="center"> Features </h1>
+This program can do as follows
+
+1. Finding the word relationships
+2. Elimiating the word that does not follows the relationship rules
+3. Edit the word that you already typed in
+4. Recovers the program, in case of caching
+5. Exit the program, and return its initial state
+6. More functionality on command center (more will be adding soon)
+
+---
 
 <h1 align="center">Future Developments </h1>
-I have an idea on making this thing to be more user-friendly, but still based on Terminal like to let you feel more immersive with the game.
+I have an idea on making this thing to be more user-friendly, but still based on Terminal like to let you feel more immersible with the game.
 
-1. Visualizing the relationships between words
-2. Adaptive terminal size
+1. Visualizing user the relationships between words
+2. Adapt the screen size to be more user friendly
+
+and other algorithms optimizations and uses of other libraries.
 
 ---
 
 <h1 align="center"> Project Checker </h1>
 This is an automatic program checker. <br>Please take a look before cloning or doing something else, just for the program build strength.
 
-|<img src="https://travis-ci.com/images/logos/TravisCI-Mascot-1.png" height="75px"> <br> TravisCI<br>Build Issues|<img src="https://pbs.twimg.com/profile_images/796423844663853056/WsR0OEAZ.jpg" height="75px">  <br> Codacy<br>Build Quality|
+|<img src="https://travis-ci.com/images/logos/TravisCI-Mascot-1.png" height="75px"> <br> TravisCI<br>Build Status|<img src="https://pbs.twimg.com/profile_images/796423844663853056/WsR0OEAZ.jpg" height="75px">  <br> Codacy<br>Build Quality|
 |:--------------------:|:--------------------:|
 |Master branch<br>[![TravisCI](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper.svg?branch=master)](https://travis-ci.org/sagelga/Fallout-4_Hacking_Helper)|Master branch<br>[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f771095c4b29457abd2395d0a29d164f)](https://www.codacy.com/app/sagelga/Fallout-4_Hacking_Helper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sagelga/Fallout-4_Hacking_Helper&amp;utm_campaign=Badge_Grade)|
+
+These project is constantly checking and they are strictly finding any issues on the programs.
 
 ---
 

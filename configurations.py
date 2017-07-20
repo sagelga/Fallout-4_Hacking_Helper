@@ -2,7 +2,6 @@
 Global configurations
 ---------------------
 You may change everything in this file to make sure your program works the way you like to have.
-
 NOTE: Editing other than default can have consequence on program. Please make sure you are ready to take impact."""
 
 # Automatically update this python script everytime it starts [Default = False]
@@ -28,3 +27,7 @@ cache_log = True
 
 # Edit file name configurations
 cache_file_name = cache_file_name + ".txt"
+
+"""
+Source Code developed by @sagelga. Follow me on GitHub! : github.com/sagelga
+"""

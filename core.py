@@ -84,6 +84,9 @@ def main():  # Served as function caller and receptions
 
         text = input("What word have you tried? : ").upper()
 
+        if text.startswith("/"):
+            results = systems.command_center(results, text)
+
         if text == "": # When input is not fine
             print("Are you sure that you have solved it? \nPress ENTER again to confirm.")
             if input() == "":
@@ -123,9 +126,10 @@ def password_filter(results, word, number):
     if configurations.debug_mode:
         print("[Debug] " + possible_answer)  # FOR DEBUG
     return possible_answer
+    
 
-
-def recommends(results):  # Calculate the word relationship for a chance of password elimination
+# Calculate the word relationship for a chance of password elimination
+def recommends(results):
     length = len(results[0])
     chars, answer = [], []
     for i in range(length):
