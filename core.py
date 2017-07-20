@@ -16,7 +16,8 @@ import systems  # Import systems.py
 import configurations  # Imports configurations.py
 
 
-def main():  # Served as function caller and receptions
+# Served as function caller and receptions
+def main():
     print("Robco Industries (TM) Termlink Protocol")
     print("Welcome to Fallout 4 Hacking Solver")
     count, results, text = 1, [], ""
@@ -126,7 +127,7 @@ def password_filter(results, word, number):
     if configurations.debug_mode:
         print("[Debug] " + possible_answer)  # FOR DEBUG
     return possible_answer
-    
+
 
 # Calculate the word relationship for a chance of password elimination
 def recommends(results):

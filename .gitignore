@@ -1,3 +1,7 @@
+.gitignore.save
+
 __pycache__
 
 .DS_Store
+
+cache.txt
