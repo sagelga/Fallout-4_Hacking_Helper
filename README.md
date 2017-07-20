@@ -46,7 +46,7 @@ If the answer is "SENT", this is how the program will eliminate the word list. A
 
 |Initial Input|Recommend<br>before tries #1|Recommend<br>before tries #2|Recommend<br>before tries #3|
 |:-----------------:|:------------:|:------------:|:------------:|
-|shot <br> hurt <br> sell <br> give <br> sure <br> gear <br> sent <br> fire <br> glow <br> week <br> ones <br> sick|**s**hot <br> hurt <br> **s**ell <br> give <br> **s**ure <br> gear <br> **s**ent <br> fire <br> glow <br> week <br> ones <br> **s**ick|**s**en**t**|**sent**|
+|shot <br> hurt <br> sell <br> give <br> sure <br> gear <br> sent <br> fire <br> glow <br> week <br> ones <br> sick|**s**hot <br> hurt <br> **s**ell <br> give <br> **s**ure <br> gear <br> **s**ent <br> fire <br> glow <br> week <br> ones <br> **s**ick|**s**ho**t <br> **s**ell <br> **s**ure <br> **s**en**t <br> **s**ick|**s**en**t**|
 
 The program chooses the relationship that is equal to the likeness as a possible answer. More efficient algorithms can be reached manually by selecting the most frequent word pattern. <br>
 Program will change recommended words every time it finds a significant changes (like finding 0 likeness answer)
