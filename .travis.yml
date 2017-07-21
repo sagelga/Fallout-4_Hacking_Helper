@@ -1,5 +1,12 @@
 language: python
-python: "3.6" # Latest (stable) version of Python 3.0
-os: linux
+python:
+- "3.6" # Latest (stable) version of Python 3.0
+- "nightly" # Latest (unstable) version o Python 3.0
 
-script: python core.py < Testcase/7-length_testcase.txt
+os: linux
+dist: trusty # Their Ubuntu 14.04 thing
+
+script:
+  - mv Testcase/7-length_testcase.txt ../
+  - cat 7-length_testcase.txt
+  - python core.py < 7-length_testcase.txt
