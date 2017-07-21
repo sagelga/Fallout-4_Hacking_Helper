@@ -62,7 +62,7 @@ def list_editor(results, actions):  # Make the item in the list editable using t
             actions = actions.upper()
 
         if actions in results:
-            for i, j in enumerate(results):
+            for i, _ in enumerate(results):
                 if results[i] == actions:
                     results[i] = input(
                         "What do you want '%s' to become? : " % (results[i])).upper()
