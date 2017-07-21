@@ -7,6 +7,5 @@ os: linux
 dist: trusty # Their Ubuntu 14.04 thing
 
 script:
-  - mv Testcase/8-length_testcase.txt ../
-  - cat 8-length_testcase.txt
-  - python core.py < 8-length_testcase.txt
+  - cat Testcase/8-length_testcase.txt
+  - python core.py < Testcase/8-length_testcase.txt
