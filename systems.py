@@ -16,7 +16,7 @@ import configurations  # Imports configurations.py
 
 def result_printer(results, wording): # Designing the way that the possible answer will be print out
     if not len(results) == 0:  # Will print if the program does not recieve a blank print
-        print(wording)
+        print(wording + " (%d)"%len(results) )
         print("-" * len(wording))
         for i in results:
             print(i, end="\t")

@@ -2,4 +2,4 @@ language: python
 python: "3.6" # Latest (stable) version of Python 3.0
 os: linux
 
-script: python core.py < test-module.txt
+script: python core.py < Testcase/7-length_testcase.txt

@@ -4,4 +4,10 @@ __pycache__
 
 .DS_Store
 
-cache.txt
+*.txt
+
+!4-length_testcase.txt
+!5-length_testcase.txt
+!8-length_testcase.txt
+!11-length_testcase.txt
+

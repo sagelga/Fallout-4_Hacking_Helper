@@ -12,8 +12,8 @@ import os                            # Allows OS system call power
 import os.path                       # Allows OS system call power
 
 # Import dependencies files
-import systems  # Import systems.py
-import configurations  # Imports configurations.py
+import systems          # Import systems.py
+import configurations   # Imports configurations.py
 
 
 # Served as function caller and receptions
@@ -34,6 +34,8 @@ def main():
         elif error_code == 2:
             print("'%s' is not a valid text length. (expecting: %d) Please try again..." % (
                 text, len(results[0])))
+        elif error_code == 3:
+            print("'%s' is already exists in the vocabulary list."%text)
         else:
             print("We are encontering the unexpectancies. Please restart the program...")
 
@@ -45,7 +47,7 @@ def main():
         elif text.isalpha():
             if (count > 1) and (len(text) != len(results[0])):
                 error_code = 2
-                continue
+
             else:
                 results.append(text.upper())
                 count += 1
@@ -53,7 +55,9 @@ def main():
 
         elif len(results) < 1:
             error_code = 1
-            continue
+
+        elif text in results:
+            error_code = 3
 
         else:
             error_code = 0
@@ -66,11 +70,12 @@ def main():
 
     while 1:
         if len(results) <= 0:
-            print("We have a problem with something... Recovering data from cache..." if cache_create else "You have disabled our cache system. We are unable to retrieve this...")
+            print("We have a problem with something... Recovering data from cache..." if configurations.cache_create else "You have disabled our cache system. We are unable to retrieve this...")
+            break
             # and actually pull data from the cache created.
 
-        if count > 3:
-            print("We have failed you. Please report this error immediately!")
+        if count > 4:
+            print("We have failed you. Our algorithms failed you.")
             print("You may continue, restart or make new issues in repository.")
 
         if len(results) == 1:
@@ -81,7 +86,7 @@ def main():
         systems.result_printer(results, "Possible answer")
         recommends(results)
 
-        print("\nAttempt #%.1d. Please try some word on your game terminal." % count)
+        print("\nAttempt #%d. Please try some word on your game terminal." % count)
 
         text = input("What word have you tried? : ").upper()
 
@@ -90,10 +95,8 @@ def main():
 
         if text == "": # When input is not fine
             print("Are you sure that you have solved it? \nPress ENTER again to confirm.")
-            if input() == "":
-                break
-            else:
-                continue
+            if input() == "": break
+            else: continue
 
         count += 1 # When the input is still in tact
 
@@ -102,7 +105,6 @@ def main():
             continue
 
         correctness = int(input("and they are what likeness? : "))
-
 
         systems.screen_clear()
         results = password_filter(results, text, correctness)
@@ -113,19 +115,25 @@ def main():
 # Filters the password that does not satisfies the relationship
 def password_filter(results, word, number):
     possible_answer = []
+
     if configurations.debug_mode:
         print("[Debug] ----- Word -----|-- Similarity --")  # FOR DEBUG
+
     for check_answer in results:
         n = 0
+
         for i, v in enumerate(word):
             if check_answer[i] == v:
                 n += 1
+
         if configurations.debug_mode:
             print("[Debug] " + check_answer, n)  # FOR DEBUG
         if n == number:
             possible_answer.append(check_answer)
+
     if configurations.debug_mode:
         print("[Debug] " + possible_answer)  # FOR DEBUG
+
     return possible_answer
 
 
@@ -145,7 +153,7 @@ def recommends(results):
             answer.append(i)
 
     systems.result_printer(
-        answer, "Recommend word contains : %s" % max_char[1])
+        answer, "Recommend word")
 
 
 # Automatic update
