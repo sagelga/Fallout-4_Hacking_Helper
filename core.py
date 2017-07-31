@@ -10,16 +10,18 @@ Thanks!
 # Importing dependencies libraries
 import os                            # Allows OS system call power
 import os.path                       # Allows OS system call power
+from time import sleep
 
 # Import dependencies files
 import systems          # Import systems.py
-import configurations   # Imports configurations.py
+import configurations as settings   # Imports configurations.py
 
 
 # Served as function caller and receptions
 def main():
     print("Robco Industries (TM) Termlink Protocol")
     print("Welcome to Fallout 4 Hacking Solver")
+    sleep(2)
     count, results, text = 1, [], ""
     error_code = 0
 
@@ -32,10 +34,10 @@ def main():
         elif error_code == 1:
             print("Please type something to start a program.")
         elif error_code == 2:
-            print("'%s' is not a valid text length. (expecting: %d) Please try again..." % (
-                text, len(results[0])))
+            print("'%s' is not a valid text length. (getting: %-2d| expecting: %-2d)" % (
+                text, len(text), len(results[0])))
         elif error_code == 3:
-            print("'%s' is already exists in the vocabulary list."%text)
+            print("'%s' is already exists in the vocabulary list." % text)
         else:
             print("We are encontering the unexpectancies. Please restart the program...")
 
@@ -70,13 +72,14 @@ def main():
 
     while 1:
         if len(results) <= 0:
-            print("We have a problem with something... Recovering data from cache..." if configurations.cache_create else "You have disabled our cache system. We are unable to retrieve this...")
+            print("We have a problem with something... Recovering data from cache..." if settings.cache_create else "You have disabled our cache system. We are unable to retrieve this...")
             break
             # and actually pull data from the cache created.
 
         if count > 4:
-            print("We have failed you. Our algorithms failed you.")
-            print("You may continue, restart or make new issues in repository.")
+            print("We have failed you. We use too much attempt.")
+            print(
+                "You may continue, restart or make new issues in our repository for further investigation.")
 
         if len(results) == 1:
             print("You have solved the riddle!")
@@ -93,15 +96,17 @@ def main():
         if text.startswith("/"):
             results = systems.command_center(results, text)
 
-        if text == "": # When input is not fine
+        if text == "":  # When input is not fine
             print("Are you sure that you have solved it? \nPress ENTER again to confirm.")
-            if input() == "": break
-            else: continue
+            if input() == "":
+                break
+            else:
+                continue
 
-        count += 1 # When the input is still in tact
+        count += 1  # When the input is still in tact
 
         if text not in results:
-            print("Word '%s' does not exists in your vocabulary list"%text)
+            print("Word '%s' does not exists in your vocabulary list" % text)
             continue
 
         correctness = int(input("and they are what likeness? : "))
@@ -116,7 +121,7 @@ def main():
 def password_filter(results, word, number):
     possible_answer = []
 
-    if configurations.debug_mode:
+    if settings.debug_mode:
         print("[Debug] ----- Word -----|-- Similarity --")  # FOR DEBUG
 
     for check_answer in results:
@@ -126,12 +131,12 @@ def password_filter(results, word, number):
             if check_answer[i] == v:
                 n += 1
 
-        if configurations.debug_mode:
+        if settings.debug_mode:
             print("[Debug] " + check_answer, n)  # FOR DEBUG
         if n == number:
             possible_answer.append(check_answer)
 
-    if configurations.debug_mode:
+    if settings.debug_mode:
         print("[Debug] " + possible_answer)  # FOR DEBUG
 
     return possible_answer
@@ -157,11 +162,11 @@ def recommends(results):
 
 
 # Automatic update
-if configurations.auto_update:
-    if configurations.debug_mode:
+if settings.auto_update:
+    if settings.debug_mode:
         print("[Debug] Updating the repository to the newest version...")
     os.system("git pull")
-    if configurations.debug_mode:
+    if settings.debug_mode:
         print("[Debug] Your repository is updated!")
 
 

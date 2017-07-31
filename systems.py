@@ -12,15 +12,18 @@ import os                            # Allows OS system call power
 import os.path                       # Allows OS system call power
 
 # Import dependencies files
-import configurations  # Imports configurations.py
+import configurations as settings  # Imports configurations.py
 
-def result_printer(results, wording): # Designing the way that the possible answer will be print out
+
+# Designing the way that the possible answer will be print out
+def result_printer(results, wording):
     if not len(results) == 0:  # Will print if the program does not recieve a blank print
-        print(wording + " (%d)"%len(results) )
+        print(wording + " (%d)" % len(results))
         print("-" * len(wording))
         for i in results:
             print(i, end="\t")
         print("\n")
+
 
 def command_center(results, actions):  # Redirect additional features using commands
     actions = input("""Welcome to command center. Here's what we can do...
@@ -33,6 +36,7 @@ What do you want to do? : """)
         exit_and_save()
 
     return results
+
 
 def list_editor(results, actions):  # Make the item in the list editable using this function
 
@@ -82,17 +86,17 @@ def screen_clear():  # Cleaning screen for the program. Does not work more than 
 
 
 def file_save(results):  # Creating the cache file and save it in the same directory
-    if configurations.cache_create:
-        if os.path.exists(configurations.cache_file_name):
+    if settings.cache_create:
+        if os.path.exists(settings.cache_file_name):
             # Try to create the file
-            if configurations.debug_mode_basic or configurations.debug_mode:
+            if settings.debug_mode_basic or settings.debug_mode:
                 print("[Debug] File %s does exists. Deleting it now..." %
-                      configurations.cache_file_name)  # FOR DEBUG
-            if configurations.cache_delete:
-                os.remove(configurations.cache_file_name)
+                      settings.cache_file_name)  # FOR DEBUG
+            if settings.cache_delete:
+                os.remove(settings.cache_file_name)
     # Start writing in that file with the data in results
 
-        file = open(configurations.cache_file_name, "w")
+        file = open(settings.cache_file_name, "w")
 
         # Creating file headers
         import datetime  # Getting user's time for cache timestamps
@@ -101,23 +105,23 @@ def file_save(results):  # Creating the cache file and save it in the same direc
         file.write(text)
 
         for i in results:
-            if (configurations.debug_mode_basic or configurations.debug_mode):
+            if (settings.debug_mode_basic or settings.debug_mode):
                 print("[Debug] Writing %s to %s" %
-                      (i, configurations.cache_file_name)) # FOR DEBUG
+                      (i, settings.cache_file_name))  # FOR DEBUG
                 text = i + "\n"
             file.write(text)
     file.close()
 
 
-def exit_and_save(): # Deleting the cache and quitting the program safely
-    if configurations.cache_delete:
-        if os.path.exists(configurations.cache_file_name):
+def exit_and_save():  # Deleting the cache and quitting the program safely
+    if settings.cache_delete:
+        if os.path.exists(settings.cache_file_name):
             # Try to delete the file, because it is still exists.
-            if configurations.debug_mode_basic or configurations.debug_mode:
+            if settings.debug_mode_basic or settings.debug_mode:
                 print("[Debug] File %s does exists. Deleting it now..." %
-                      configurations.cache_file_name)  # FOR DEBUG
-            os.remove(configurations.cache_file_name)
+                      settings.cache_file_name)  # FOR DEBUG
+            os.remove(settings.cache_file_name)
 
-    if configurations.debug_mode:
+    if settings.debug_mode:
         print("[Debug] Shutting the program down now. Thank you!")  # FOR DEBUG
     exit()

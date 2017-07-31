@@ -14,7 +14,7 @@ debug_mode = False
 debug_mode_basic = False
 
 # Set up the cache file name to be [Default = "cache"]
-cache_file_name = "cache"
+cache_file_name = "cache"  # and will use .txt as a file surname
 
 # Allow program to create cache file [Default = True]
 cache_create = True
